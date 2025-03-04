@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+{% block content %}
+  <p>Lets check if your puppies name is valid</p>
+  {% if username.islower()==False and username.isupper()==False and username[-1].isdigit() and username[:-2].isdigit()==False %}
+    <p>{{username}} is a valid name</p>
+  {% else %}
+    <p>Oh no! Your puppy's name is invalid</p>
+    <p>These are the conditions your puppy's name did'nt meet</p>
+    <ul>
+        
+        {% if username.islower() %}
+          <li>Your username should contain atleast one uppercase charecter</li>
+        {% endif %}
+
+        {% if username.isupper() %}
+          <li>Your username should contain atleast one lowercase charecter</li>
+        {% endif %}
+
+        {% if username[-1].isdigit()==False %}
+          <li>Your username should end with a number</li>
+        {% endif %}
+
+    </ul>
+  {% endif %}
+{% endblock %}
